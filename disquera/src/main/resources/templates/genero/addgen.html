@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmls:th="https://www.thymeleaf.org" lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	    <link rel="stylesheet" type="text/css" th:href="@{/css/addgen.css}">
+	    <title>Agregar Nuevo Gênero</title>
+    </head>
+    <body>
+    <a href="listgen" class="fa fa-window-close"></a>
+	<div class="content"> 
+        <h1 th:text="${accion}"></h1>
+        <form method="post" th:action="@{/genero/add}" th:object="${genero}">
+            <label id="name">Nombre:</label><br>
+            <input type="text" id="nomGen" th:field="*{nomGen}"><br>
+                <p th:if="${#fields.hasErrors('nomGen')}" th:errors="*{nomGen}" id="error"></p><br>
+            <label id="estGen">Estado:</label>
+            <input type="checkbox" th:field="*{estGen}" id="estGen" checked>
+            <label for="estgen"><span>Activo</span></label><br>
+            <input type="submit" value="Agregar" name="accion">
+        </form>
+    </body>
+</html>

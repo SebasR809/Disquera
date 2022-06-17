@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <link rel="stylesheet" type="text/css" th:href="@{/css/addgen.css}">
+        <title>Agregar Nueva Etiqueta</title>
+    </head>
+    <body>
+    <center>
+        <a href="listdisq">Volver</a>
+        <h1 th:text="${accion}"></h1>
+            <form method="post" th:action="@{/disqueras/add}" th:object="${disquera}">
+                <label id="nitDisq">Nit</label><br>
+                <input type="text" id="nitDisq" th:field="*{nitDisq}"><br>
+                    <p th:if="${#fields.hasErrors('nitDisq')}" th:errors="*{nitDisq}"></p>
+                <label>Nombre:</label><br>
+                <input type="text" id="nomDisq" th:field="*{nomDisq}"><br>
+                    <p th:if="${#fields.hasErrors('nomDisq')}" th:errors="*{nomDisq}"></p>
+                <label>Telefono</label><br>
+                <input type="text" id="numDisq" th:field="*{numDisq}"><br>
+                    <p th:if="${#fields.hasErrors('numDisq')}" th:errors="*{numDisq}"></p>
+                <label>Dirección</label><br>
+                <input type="text" id="dirreDisq" th:field="*{dirreDisq}"><br>
+                    <p th:if="${#fields.hasErrors('dirreDisq')}" th:errors="*{dirreDisq}"></p>
+                <label>Estado:</label><br>
+                <input type="checkbox"  id="estDisq" th:field="*{estDisq}" checked>
+                <label for="estdis">Activo</label><br>
+                <input type="submit" value="Agregar" name="accion"><br>
+            </form>
+    </center>
+    </body>
+</html>

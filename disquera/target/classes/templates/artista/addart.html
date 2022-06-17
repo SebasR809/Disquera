@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <link rel="stylesheet" type="text/css" href="">
+    <title>Agregar Nuevo Artista</title>
+</head>
+<body>
+    <center>
+        <a href="listart">Volver</a>
+        <h1 th:text="${accion}"></h1>
+            <form method="post" th:action="@{/artista/add}" th:object="${artista}">
+                <label id="nomArt">Nombre</label><br>
+                <input type="text" id="nomArt" th:field="*{nomArt}"><br>
+                   <p th:if="${#fields.hasErrors('nomArt')}" th:errors="*{nomArt}"></p>
+                <label>Apellido</label><br>
+                <input type="text" id="apelArt" th:field="*{apelArt}"><br>
+                    <p th:if="${#fields.hasErrors('apelArt')}" th:errors="*{apelArt}"></p>
+                <label>Nombre Artistico</label><br>
+                <input type="text" id="apodoArt" th:field="*{apodoArt}"><br>
+                    <p th:if="${#fields.hasErrors('apodoArt')}" th:errors="*{apodoArt}"></p>
+                <label>Tipo de Documento</label><br>
+                <input type="text" id="tipdocArt" th:field="*{tipdocArt}"><br>
+                    <p th:if="${#fields.hasErrors('tipdocArt')}" th:errors="*{tipdocArt}"></p>
+                <label>N° Documento</label><br>
+                <input type="number" id="numdocArt" th:field="*{numdocArt}"><br>
+                    <p th:if="${#fields.hasErrors('numdocArt')}" th:errors="*{numdocArt}"></p>
+                <label>Fecha Nacimiento</label><br>
+                <input type="date" id="fecnacArt" th:field="*{fecnacArt}"><br>
+                <label>Correo</label><br>
+                <input type="email" id="emailArt" th:field="*{emailArt}"><br>
+                    <p th:if="${#fields.hasErrors('emailArt')}" th:errors="*{emailArt}"></p>
+                <label>Estado:</label><br>        
+                <input type="checkbox"  id="estArt" th:field="*{estArt}" checked>
+                <label for="estArt">Activo</label><br>
+                <input type="submit" value="Agregar" name="accion"><br>
+            </form>
+    </center>
+</body>
+</html>

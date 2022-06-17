@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artistas</title>
+</head>
+<body>
+    <a href="/disquera/index">Volver</a>
+    <center>
+        <h1>Artistas</h1>
+        <a href="addart">Agregar</a>
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Apodo</th>
+                <th>Tipo Doc</th>
+                <th>N° Doc</th>
+                <th>Fecha Nacimiento</th>
+                <th>Email</th>
+                <th>Estado</th>
+                <th colspan="3">
+                    <center>Acciones</center>
+                </th>
+            </tr>
+            <tr th:if="${artistas.size>0}" th:each="a:${artista}">
+                <td th:text="${a.idArt}"></td>
+                <td th:text="${a.nomArt}"></td>
+                <td th:text="${a.apelArt}"></td>
+                <td th:text="${a.apodoArt}"></td>
+                <td th:text="${a.tipdocArt}"></td>        
+                <td th:text="${a.numdocArt}"></td>
+                <td th:text="${a.fecnacArt}"></td>
+                <td th:text="${a.emailArt}"></td>
+                <td th:if="${a.estArt==true}">
+                    <span>Activo</span>
+                </td>
+                <td th:if="${a.estArt==false}">
+                    <span>Inactivo</span>
+                </td>
+                <td th:if="${a.estArt==true}">
+                    <a href="">Inactivar</a>
+                </td>
+                <td th:if="${a.estArt==false}">
+                    <a href="">Activar</a>
+                </td>
+                <td>
+                    <a th:href="@{/artista/listid/} + ${a.idArt}" rol="button">Modificar</a>
+                </td>
+                <td>
+                    <a th:href="@{/artista/delete/} + ${a.idArt}" rol="button" onclick="return confirm('¿Estás seguro que quieres eliminar este artista?');">Eliminar</a>
+                </td>
+            </tr>
+        </c:forEach>
+        </table>
+        <div th:if="${artistas.size==0}">
+            No hay artistas para mostrar
+        </div>
+    </center>
+</body>
+</html>
